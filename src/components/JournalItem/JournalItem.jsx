@@ -1,10 +1,7 @@
+/* eslint-disable react/prop-types */
 import "./JournalItem.css";
 
-export default function JournalItem() {
-    const title = "Title";
-    const date = new Date();
-    const text = "Text";
-
+export default function JournalItem({ title, date, text }) {
     return <div className="journal-item">
         <h2 className="journal-item__header">{title}</h2>
         <div className="journal-item__body">
