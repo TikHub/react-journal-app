@@ -19,5 +19,7 @@ module.exports = {
     semi: ["error", "always", { omitLastInOneLineBlock: false }],
     "comma-dangle": ["error", "never"],
     quotes: ["error", "double"],
+    "react/prop-types": [0],
+    indent: ["error", "tab"],
   },
 };
