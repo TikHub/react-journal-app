@@ -15,7 +15,7 @@ export default function JournalForm() {
       <input type="date" name="date" />
       <input type="text" name="tag" />
       <textarea name="post"></textarea>
-      <Button accent name="Save" />
+      <Button accent name="Save" onClick={() => console.log('Clicked')} />
     </form>
   );
 }
