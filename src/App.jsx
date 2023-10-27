@@ -2,10 +2,10 @@ import LeftPanel from "./layouts/LeftPanel";
 import Body from "./layouts/Body";
 
 import Header from "./components/Header";
-import Button from "./components/Button";
 import JournalList from "./components/JournalList";
 import JournalItem from "./components/JournalItem";
-import JournalAddButton from "./components/JournalAddButton/JournalAddButton";
+import JournalAddButton from "./components/JournalAddButton";
+import JournalForm from "./components/JournalForm";
 import CardButton from "./components/CardButton";
 
 import "./App.css";
@@ -47,9 +47,8 @@ function App() {
 				</JournalList>
 			</LeftPanel>
 			<Body>
-        Body
+				<JournalForm />
 			</Body>
-			{/* <Button accent name="Save" /> */}
 		</div>
 	);
 }
