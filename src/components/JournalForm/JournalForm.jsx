@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../Button";
 
 import styles from "./JournalForm.module.css";
+import classNames from "classnames";
 
 export default function JournalForm({ onSubmit }) {
   const [formValidState, setFormValidState] = useState({
@@ -42,11 +43,17 @@ export default function JournalForm({ onSubmit }) {
   };
 
   return (
-    <form className={styles['journal-form']} onSubmit={addJournalItem}>
-      <input type="text" name="title" className={`${styles.input} ${formValidState.title ? '' : styles.invalid}`} />
-      <input type="date" name="date" className={`${styles.input} ${formValidState.date ? '' : styles.invalid}`} />
+    <form className={classNames(styles['journal-form'])} onSubmit={addJournalItem}>
+      <input type="text" name="title" className={classNames(styles.input, {
+        [styles['invalid']]: !formValidState.title
+      })} />
+      <input type="date" name="date" className={classNames(styles.input, {
+        [styles['invalid']]: !formValidState.title
+      })} />
       <input type="text" name="tag" />
-      <textarea name="post" className={`${styles.input} ${formValidState.post ? '' : styles.invalid}`} ></textarea>
+      <textarea name="post" className={classNames(styles.input, {
+        [styles['invalid']]: !formValidState.title
+      })} ></textarea>
       <Button accent name="Save" />
     </form>
   );
