@@ -9,25 +9,38 @@ import JournalForm from "./components/JournalForm";
 import CardButton from "./components/CardButton";
 
 import "./App.css";
+import { useState } from "react";
+
+const INITIAL_DATA = [
+	{
+		id: 1,
+		title: "Title 1",
+		date: new Date(),
+		text: "Text 1"
+	},
+	{
+		id: 2,
+		title: "Title 2",
+		date: new Date(),
+		text: "Text 2"
+	}
+];
 
 function App() {
-	const data = [
-		{
-			title: "Title 1",
+	const [journalItems, setJournalItems] = useState(INITIAL_DATA);
+
+	const addJournalItem = (item) => {
+		setJournalItems((oldJournalItem) => [...oldJournalItem, {
+			id: Math.max(...oldJournalItem.map(i => i.id)) + 1,
+			title: item.title,
 			date: new Date(),
-			text: "Text 1"
-		},
-		{
-			title: "Title 2",
-			date: new Date(),
-			text: "Text 2"
-		},
-		{
-			title: "Title 3",
-			date: new Date(),
-			text: "Text 3"
-		}
-	];
+			text: item.text,
+		}])
+	}
+
+	const sortItems = (a, b) => {
+		return a.date - b.date < 0 ? 1 : -1;
+	}
 
 	return (
 		<div className="app">
@@ -35,19 +48,15 @@ function App() {
 				<Header />
 				<JournalAddButton></JournalAddButton>
 				<JournalList>
-					<CardButton>
-						<JournalItem title={data[0].title} date={data[0].date} text={data[0].text} />
-					</CardButton>
-					<CardButton>
-						<JournalItem title={data[1].title} date={data[1].date} text={data[1].text} />
-					</CardButton>
-					<CardButton>
-						<JournalItem title={data[2].title} date={data[2].date} text={data[2].text} />
-					</CardButton>
+					{
+						journalItems
+							.sort(sortItems)
+							.map(({ id, title, date, text }) => <CardButton key={id}><JournalItem title={title} date={date} text={text} /></CardButton>)
+					}
 				</JournalList>
 			</LeftPanel>
 			<Body>
-				<JournalForm />
+				<JournalForm onSubmit={addJournalItem} />
 			</Body>
 		</div>
 	);

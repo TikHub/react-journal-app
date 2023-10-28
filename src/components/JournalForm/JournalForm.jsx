@@ -2,11 +2,12 @@ import Button from "../Button";
 
 import "./JournalForm.css";
 
-export default function JournalForm() {
+export default function JournalForm({ onSubmit }) {
   const addJournalItem = function (event) {
     event.preventDefault();
     const formData = new FormData(event.target)
     const formProps = Object.fromEntries(formData)
+    onSubmit(formProps)
   };
 
   return (
@@ -14,8 +15,8 @@ export default function JournalForm() {
       <input type="text" name="title" />
       <input type="date" name="date" />
       <input type="text" name="tag" />
-      <textarea name="post"></textarea>
-      <Button accent name="Save" onClick={() => console.log('Clicked')} />
+      <textarea name="text"></textarea>
+      <Button accent name="Save" />
     </form>
   );
 }
