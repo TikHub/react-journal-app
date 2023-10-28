@@ -4,7 +4,39 @@
     gap: 30px;
 }
 
-.input {}
+.input {
+    border: none;
+    border-bottom: 1px solid #272727;
+    background: none;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 100%;
+}
+
+.input-title {
+    border: none;
+    border-bottom: 1px solid #272727;
+    background: none;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 100%;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 150px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+}
 
 .invalid {
     border: 1px solid #d00;

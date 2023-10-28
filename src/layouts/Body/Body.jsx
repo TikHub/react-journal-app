@@ -1,7 +1,7 @@
-import "./Body.css";
+import styles from "./Body.module.css";
 
-export default function Body({children}) {
+export default function Body({ children }) {
 	return (
-		<div className="body">{children}</div>
+		<div className={styles["body"]}>{children}</div>
 	);
 }
