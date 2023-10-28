@@ -14,13 +14,13 @@ const INITIAL_DATA = [
 	// 	id: 1,
 	// 	title: "Title 1",
 	// 	date: new Date(),
-	// 	text: "Text 1"
+	// 	post: "Text 1"
 	// },
 	// {
 	// 	id: 2,
 	// 	title: "Title 2",
 	// 	date: new Date(),
-	// 	text: "Text 2"
+	// 	post: "Text 2"
 	// }
 ];
 
@@ -32,7 +32,7 @@ function App() {
 			id: oldJournalItem.length > 0 ? Math.max(...oldJournalItem.map(i => i.id)) + 1 : 1,
 			title: item.title,
 			date: new Date(item.date || Date.now()),
-			text: item.text,
+			post: item.post,
 		}])
 	}
 

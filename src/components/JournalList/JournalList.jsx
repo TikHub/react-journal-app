@@ -17,7 +17,7 @@ export default function JournalList({ items }) {
 			{
 				items
 					.sort(sortItems)
-					.map(({ id, title, date, text }) => <CardButton key={id}><JournalItem title={title} date={date} text={text} /></CardButton>)
+					.map(({ id, title, date, post }) => <CardButton key={id}><JournalItem title={title} date={date} post={post} /></CardButton>)
 			}
 		</div>
 	);
