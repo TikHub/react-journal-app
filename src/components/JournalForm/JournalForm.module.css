@@ -4,6 +4,8 @@
     gap: 30px;
 }
 
+.input {}
+
 .invalid {
     border: 1px solid #d00;
     background-color: rgb(122, 37, 37);
