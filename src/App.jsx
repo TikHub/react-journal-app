@@ -3,10 +3,8 @@ import Body from "./layouts/Body";
 
 import Header from "./components/Header";
 import JournalList from "./components/JournalList";
-import JournalItem from "./components/JournalItem";
 import JournalAddButton from "./components/JournalAddButton";
 import JournalForm from "./components/JournalForm";
-import CardButton from "./components/CardButton";
 
 import "./App.css";
 import { useState } from "react";
@@ -33,13 +31,9 @@ function App() {
 		setJournalItems((oldJournalItem) => [...oldJournalItem, {
 			id: Math.max(...oldJournalItem.map(i => i.id)) + 1,
 			title: item.title,
-			date: new Date(),
+			date: new Date(item.date || Date.now()),
 			text: item.text,
 		}])
-	}
-
-	const sortItems = (a, b) => {
-		return a.date - b.date < 0 ? 1 : -1;
 	}
 
 	return (
@@ -47,13 +41,7 @@ function App() {
 			<LeftPanel>
 				<Header />
 				<JournalAddButton></JournalAddButton>
-				<JournalList>
-					{
-						journalItems
-							.sort(sortItems)
-							.map(({ id, title, date, text }) => <CardButton key={id}><JournalItem title={title} date={date} text={text} /></CardButton>)
-					}
-				</JournalList>
+				<JournalList items={journalItems} />
 			</LeftPanel>
 			<Body>
 				<JournalForm onSubmit={addJournalItem} />
