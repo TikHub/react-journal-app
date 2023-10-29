@@ -7,25 +7,20 @@ import JournalAddButton from "./components/JournalAddButton";
 import JournalForm from "./components/JournalForm";
 
 import "./App.css";
-import { useState } from "react";
-
-const INITIAL_DATA = [
-	// {
-	// 	id: 1,
-	// 	title: "Title 1",
-	// 	date: new Date(),
-	// 	post: "Text 1"
-	// },
-	// {
-	// 	id: 2,
-	// 	title: "Title 2",
-	// 	date: new Date(),
-	// 	post: "Text 2"
-	// }
-];
+import { useEffect, useState } from "react";
 
 function App() {
-	const [journalItems, setJournalItems] = useState(INITIAL_DATA);
+	const [journalItems, setJournalItems] = useState([]);
+
+	useEffect(() => {
+		const data = JSON.parse(localStorage.getItem('data'))
+		if (data) {
+			setJournalItems(data.map(item => ({
+				...item,
+				date: new Date(item.date)
+			})));
+		}
+	}, []);
 
 	const addJournalItem = (item) => {
 		setJournalItems((oldJournalItem) => [...oldJournalItem, {
