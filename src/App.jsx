@@ -22,6 +22,10 @@ function App() {
 		}
 	}, []);
 
+	useEffect(() => {
+		if (journalItems.length) localStorage.setItem('data', JSON.stringify(journalItems))
+	}, [journalItems])
+
 	const addJournalItem = (item) => {
 		setJournalItems((oldJournalItem) => [...oldJournalItem, {
 			id: oldJournalItem.length > 0 ? Math.max(...oldJournalItem.map(i => i.id)) + 1 : 1,
